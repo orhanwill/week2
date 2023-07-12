@@ -1,0 +1,52 @@
+using System;
+
+namespace Bank_Account_Question
+{
+    class Program
+    {
+        interface IBankAccount
+        {
+            void Deposit(double amount);
+            void Withdraw(double amount);
+        }
+
+
+
+        public abstract class BankAccount: IBankAccount
+        {
+            public string Name { get; set; }
+            public int Account_Number { get; set; }
+            public double Balance { get; set; }
+            public BankAccount(string name,int account_number,double balance)
+            {
+                Name = name;
+                Account_Number = account_number;
+                Balance = balance;
+            }
+            public virtual void Deposit(double amount) { }
+            public void Withdraw(double amount) { }
+            public abstract void DisplayAccountInfo(double amount);
+
+        }
+
+
+        public class SavingsAccount
+        {
+
+            public double InterestRate { get; set; }
+            public SavingsAccount(string name, int account_number, double balance, double interestrate) : base(name, account_number, balance) {
+                InterestRate = interestrate;
+            }
+            
+            public override void Deposit(double amount) {}
+            public void Withdraw(double amount) { }
+            public void DisplayAccountInfo(double amount) { }
+
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
